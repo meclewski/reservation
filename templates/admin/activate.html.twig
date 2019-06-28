@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Potwierdzanie rezerwacji{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="text-center">
+            <h1>Termin potwierdzony</h1><hr>
+
+        </div>
+
+        </br><hr></br>
+        <a class="btn btn-info" href="/admin">Powrót</a>
+    </div>
+
+    {% block javascripts %}
+        {{ parent() }}
+    {% endblock %}
+
+{% endblock %}

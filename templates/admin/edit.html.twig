@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Potwierdzanie rezerwacji{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="text-center">
+        <h1>Potwierdzanie rezerwacji</h1><hr>
+        <h6 class="text-danger">Sprawdź czy wszystkie odoby otrzymały potwierdzenie</h6><hr>
+    </div>   
+    <input type="hidden" id="user" value="Łukasz M">
+    <input type="hidden" id="term" value="{{ lesson.date|date("Y-m-d") }}">
+    <input type="hidden" id="hour" value="{{ lesson.hour.startTime|date('H:i') }}">
+    <div class="row">
+        {% if form1 is defined %}
+            <div class="col-sm-3">
+                {{ form_start(form1, {'attr': { 'id':'form1' }}) }}
+                {{ form_widget(form1) }}
+                
+                <hr>
+                <div class="btn-block">
+                    <input type="submit" form="form1" class="btn btn-primary" value="Zapisz"/>
+                    <a id="emailSend1" class="btn btn-secondary float-right" href="#">Wyślij maila</a>    
+                </div>
+                
+                {{ form_end(form1) }}
+            </div>    
+        {% endif %}
+        {% if form2 is defined %}
+            <div class="col-sm-3">
+                {{ form_start(form2, {'attr': { 'id':'form2' }}) }}
+                {{ form_widget(form2) }}
+                
+                <hr>
+                <div class="btn-block">
+                    <input type="submit" form="form2" class="btn btn-primary" value="Zapisz"/> 
+                    <a id="emailSend2" class="btn btn-secondary float-right" href="#">Wyślij maila</a>   
+                </div>
+                
+                {{ form_end(form2) }}
+            </div>
+        {% endif %}
+        {% if form3 is defined %}
+            <div class="col-sm-3">
+                {{ form_start(form3, {'attr': { 'id':'form3' }}) }}
+                {{ form_widget(form3) }}
+                
+                <hr>
+                <div class="btn-block">
+                    <input type="submit" form="form3" class="btn btn-primary" value="Zapisz"/>
+                    <a id="emailSend3" class="btn btn-secondary float-right" href="#">Wyślij maila</a>    
+            </div>
+            
+            {{ form_end(form3) }}
+            </div>
+        {% endif %}
+        {% if form4 is defined %}
+            <div class="col-sm-3">
+                {{ form_start(form4, {'attr': { 'id':'form4' }}) }}
+                {{ form_widget(form4) }}
+                
+                <hr>
+                <div class="btn-block">
+                    <input type="submit" form="form4" class="btn btn-primary" value="Zapisz"/>  
+                    <a id="emailSend4" class="btn btn-secondary float-right" href="#">Wyślij maila</a>  
+            </div>
+            
+            {{ form_end(form4) }}
+            </div>
+        {% endif %}
+        </div>
+        </br><hr></br>
+        <a class="btn btn-info" href="/admin">Powrót</a>
+</div>
+
+    {% block javascripts %}
+        {{ parent() }}
+    {% endblock %}
+
+{% endblock %}

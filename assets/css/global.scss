@@ -1,0 +1,26 @@
+// customize some Bootstrap variables
+$primary: darken(#428bca, 20%);
+
+// the ~ allows you to reference things in node_modules
+@import "~bootstrap/scss/bootstrap";
+
+.clickable:hover,
+.adminclickable:hover {
+    background-color: lightgray;
+    color: #000000;
+}
+
+.clickable,
+.adminclickable,
+.activate{
+    background-color:#ecffe6;
+    cursor: pointer;
+}
+
+.adminclickable:hover {
+  background-color: lightgray;
+  color: #000000;
+}
+
+
+

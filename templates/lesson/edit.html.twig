@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rezerwacja terminu{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="text-center">
+        <h1>Rezerwacja terminu</h1><hr>
+        <h6 class="text-danger">Proszę wypełnić formularz i oczekiwać na zatwierdznie.</h6>
+        <h6 class="text-danger">Termin zostanie potwierdzony mailowo lub telefonicznie. Dziękujemy.</h6><hr>
+    </div>    
+    {{ form_start(form) }}    
+    {{ form_widget(form) }}
+    </br><hr>
+    <div class="btn-block">
+        <input type="submit" class="btn btn-primary" value="Zapisz"/>
+        
+        <a class="btn btn-info" href="/lesson">Powrót</a>
+    </div>
+    {{ form_end(form) }}
+</div>
+
+    {% block javascripts %}
+        {{ parent() }}
+    {% endblock %}
+
+{% endblock %}

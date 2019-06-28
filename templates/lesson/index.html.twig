@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}System rezerwacji{% endblock %}
+
+{% block stylesheets %}  
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+<div class="container" id="test">
+    <div class="text-center">
+        <h1>Terminarz</h1><hr>
+        <h6 class="text-danger">Proszę wybrać dostępny termin i wypełnić formularz.</h6><hr>
+    </div>
+    {% if (week == false) %}
+        <div class="text-right">
+            <a class="btn btn-info btn-sm" style="color:white" id="arrow_nextweek_u">nast. 7 dni >></a> 
+        </div>
+    {% else %}
+        <div class="text-left">
+            <a class="btn btn-info btn-sm" style="color:white" id="arrow_prevweek_u"><< poprz. 7 dni</a> 
+        </div>
+    {% endif %}
+    <table class="table table-responsive table-my table-data table-bordered" id="expense2">
+        <tr>
+            <th style="background-color:lightblue">Godzina\Data</th>    
+            {% for d in dates|slice(0,7) %}
+                <td style="background-color:lightblue">{{ d }}</td>
+            {% endfor %}
+        </tr>
+        {% for h in hours %}
+            <tr>
+                <td style="background-color:lightyellow">{{h.startTime|date('H:i')}} - {{h.stopTime|date('H:i')}}</td>
+                {% for l in lesson %} 
+                {% for d in dates|slice(0,7) %}
+                     
+                    {% if (l.date|date("Y-m-d") == d|date("Y-m-d")) and (l.hour.id == h.id) %}
+                            {% if (l.children.count >= 4) %}
+                            <td class="notclickable" id="{{ d }}" style="background-color:#ffcccc">
+                            termin niedostępny
+                            {% else %}
+                            <td class="clickable" id="{{ l.id }}">
+                            termin dostępny
+                            </td>
+                            {% endif %}
+                    
+                    {% endif %}
+                {% endfor %}
+                {% endfor %}          
+            </tr>
+        {% endfor %}     
+    </table></br>   
+</div>
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% endblock %}
